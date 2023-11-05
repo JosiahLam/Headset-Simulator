@@ -23,7 +23,7 @@ class TestHeadset(unittest.TestCase):
 
     def test_contructor_typical1(self):
         """
-        Input: "Apple" "AirPod Pro MAX" with a price of $2499, 5000 battery life hour
+        Input: "Apple" "AirPod Pro MAX" with a price of $2499.0, 5000 battery life hour
         Expected output: instance of a APPLE with all variables above 
         """
 
@@ -39,7 +39,7 @@ class TestHeadset(unittest.TestCase):
     
     def test_contructor_typical2(self):
         """
-        Input: "SONY" "XM5" with a price of $300, 6000 battery life hour
+        Input: "SONY" "XM5" with a price of $300.0, 6000 battery life hour
         Expected output: instance of a SONY with all variables above 
         """
 
@@ -55,7 +55,7 @@ class TestHeadset(unittest.TestCase):
 
     def test_contructor2_typical1(self):
         """
-        Input: "Crusher" "ANC" with a price of $72514, 10000 battery life hour and wireless
+        Input: "Crusher" "ANC" with a price of $72514.0, 10000 battery life hour and wireless
         Expected output: instance of a Crusher with all variables above 
         """
 
@@ -71,7 +71,7 @@ class TestHeadset(unittest.TestCase):
 
     def test_contructor2_typical2(self):
         """
-        Input: "BOSE" "A30" with a price of $2999, 6000 battery life hour and wireless
+        Input: "BOSE" "A30" with a price of $2999.0, 6000 battery life hour and wireless
         Expected output: instance of a BOSE with all variables above 
         """
 
@@ -87,7 +87,7 @@ class TestHeadset(unittest.TestCase):
 
     def test_constructor_unusual1(self):
         """
-        Input: "Apple" + "Pro" with a price of $3499, 1,000,000,000 battery life hour and
+        Input: "Apple" + "Pro" with a price of $3499.0, 1,000,000,000 battery life hour and
         Expected output: instance of a Apple with all variables above 
         """
 
@@ -102,7 +102,7 @@ class TestHeadset(unittest.TestCase):
 
     def test_constructor_unusual2(self):
         """
-        Input: empty string with a 0 dollar price, 6000 battery life hour and
+        Input: empty string with a 0.0 dollar price, 6000 battery life hour and
         Expected output: instance of a Apple with all variables above 
         """
 
@@ -139,7 +139,7 @@ class TestHeadset(unittest.TestCase):
             
 
 
-#Accessor Basic 
+#Accessor Basic Functions
 
 
     def test_getName(self):
@@ -153,11 +153,11 @@ class TestHeadset(unittest.TestCase):
         
     def test_getPrice(self):
         """
-        Input: "Apple" "AirPod Pro MAX" with a price of $999, 10000 battery life hour
+        Input: "Apple" "AirPod Pro MAX" with a price of $999.0, 10000 battery life hour
         Expected output: instance of a APPLE with all variables above 
         """
         # Check post conditions
-        self.assertEqual(templete_headset.getPrice(), 999)        
+        self.assertEqual(templete_headset.getPrice(), 999.0)        
         
         
     def test_getBattery_life_hour(self):
@@ -283,17 +283,18 @@ class TestHeadset(unittest.TestCase):
         Input: "SONY", "XM5"
         Expected output: True
         """
-         # Check post conditions
+        #Check post conditions
         self.assertEqual(templete_headset.set_name("SONY", "XM5"), True)
+        self.assertEqual(templete_headset.getName(), "SONY XM5")
         
     def test_set_name_typical2(self):
         """
         Input: "BOSE", "A30"
         Expected output: True
         """
-         # Check post conditions
+        #Check post conditions
         self.assertEqual(templete_headset.set_name("BOSE", "A30"), True)
-
+        self.assertEqual(templete_headset.getName(), "BOSE A30")
 
     def test_set_name_unusual1(self):
         """
@@ -301,6 +302,8 @@ class TestHeadset(unittest.TestCase):
         Expected output: True
         """
         self.assertEqual(templete_headset.set_name(" ", " "), True)
+        self.assertEqual(templete_headset.getName(), "   ")
+
         
     def test_set_name_unusual2(self):
         """
@@ -308,6 +311,8 @@ class TestHeadset(unittest.TestCase):
         Expected output: True
         """
         self.assertEqual(templete_headset.set_name("APple", "PROOOOOOOOOOOOOOOOOOOOOOOOOOOOO"), True)
+        self.assertEqual(templete_headset.getName(), "APple PROOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+
         
     def test_set_name_error1(self):
         """
@@ -336,6 +341,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_price(1000.0), True)
+        self.assertEqual(templete_headset.getPrice(), 1000.0)
+
         
     def test_set_price_typical2(self):
         """
@@ -344,6 +351,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_price(3000.0), True)
+        self.assertEqual(templete_headset.getPrice(), 3000.0)
+
     
     def test_set_price_unusual1(self):
         """
@@ -352,6 +361,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_price(123456789.0), True)
+        self.assertEqual(templete_headset.getPrice(), 123456789.0)
+
         
     def test_set_price_unusual2(self):
         """
@@ -360,6 +371,7 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_price(0.0), True)
+        self.assertEqual(templete_headset.getPrice(), 0.0)
         
     def test_set_price_error1(self):
         """
@@ -388,6 +400,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_battery_life_hour(1000), True)
+        self.assertEqual(templete_headset.getBattery_life_hour(), 1000)
+
         
         
     def test_set_battery_life_hour_typical2(self):
@@ -397,6 +411,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_battery_life_hour(90000), True)
+        self.assertEqual(templete_headset.getBattery_life_hour(), 90000)
+
         
     
     def test_set_battery_life_hour_unusual1(self):
@@ -406,6 +422,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_battery_life_hour(2340056700890), True)
+        self.assertEqual(templete_headset.getBattery_life_hour(), 2340056700890)
+
         
     def test_set_battery_life_hour_unusual2(self):
         """
@@ -414,6 +432,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_battery_life_hour(0), True)
+        self.assertEqual(templete_headset.getBattery_life_hour(), 0)
+
         
     def test_set_battery_life_hour_error1(self):
         """
@@ -445,6 +465,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_volumn(10), True)
+        self.assertEqual(templete_headset.getVolumn(), 10)
+
         
     def test_set_volumn_typical2(self):
         """
@@ -453,6 +475,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_volumn(90), True)
+        self.assertEqual(templete_headset.getVolumn(), 90)
+
         
     def test_set_volumn_unusual1(self):
         """
@@ -461,6 +485,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_volumn(200), False)
+        self.assertEqual(templete_headset.getVolumn(), 90)
+
     
     def test_set_volumn_unusual2(self):
         """
@@ -469,6 +495,8 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_volumn(-10), False)
+        self.assertEqual(templete_headset.getVolumn(), 90)
+
         
     def test_set_volum_error1(self):
         """
@@ -500,6 +528,7 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_library({"One Direction" : ["History","Perfect","One Thing", "Story of my life"] , "Taylor Swift": ["I Knew You Were Trouble.", "Blank Space", "Anti-Hero", "Love Story"]}), True)
+        # self.assertEqual(templete_headset.getLibrary(), {"One Direction" : ["History","Perfect","One Thing", "Story of my life"] , "Taylor Swift": ["I Knew You Were Trouble.", "Blank Space", "Anti-Hero", "Love Story"]})
 
     def test_set_library_typical2(self):
         """
@@ -508,6 +537,7 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_library({"Travis Scott" : ["5% TINT","K-POP","SICKO MODE", "TELEKINESIS"] , "Dua Lipa": ["Leviatating"]}), True)
+        # self.assertEqual(templete_headset.getLibrary(),{"Travis Scott" : ["5% TINT","K-POP","SICKO MODE", "TELEKINESIS"] , "Dua Lipa": ["Leviatating"]}) 
 
     def test_set_library_unusual1(self):
         """
@@ -516,6 +546,7 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_library({" ": ["I Knew You Were Trouble.", "Blank Space", "Anti-Hero", "Love Story"]}), True)
+        # self.assertEqual(templete_headset.getLibrary(), {" ": ["I Knew You Were Trouble.", "Blank Space", "Anti-Hero", "Love Story"]})
         
     def test_set_library_unusual2(self):
         """
@@ -525,15 +556,7 @@ class TestHeadset(unittest.TestCase):
         """
          # Check post conditions
         self.assertEqual(templete_headset.set_library({"Taylor Swift": []}), True)
-
-    def test_set_library_unusual2(self):
-        """
-        Input: {"Taylor Swift": []}
-
-        Expected output: True
-        """
-         # Check post conditions
-        self.assertEqual(templete_headset.set_library({"Taylor Swift": []}), True)
+        # self.assertEqual(templete_headset.getLibrary(),{"Taylor Swift": []})
         
     def test_set_library_error1(self):
         """
@@ -572,7 +595,8 @@ class TestHeadset(unittest.TestCase):
         test_remove.set_library({"LE SSERAFIM" : ["Impurities","No-return","Blue Flame", "UNFORGIVEN"] , "Taylor Swift": ["I Knew You Were Trouble.", "Blank Space", "Anti-Hero", "Love Story"]})
         #remove artist and song from library
         self.assertEqual(test_remove.remove_library({"LE SSERAFIM" : ["Impurities","No-return","Blue Flame"] , "Taylor Swift": ["I Knew You Were Trouble.", "Blank Space", "Anti-Hero", "Love Story"]}), True)
-        #check library
+        
+        #check library (to be cont.)
         # self.assertEqual(templete_headset.getLibrary(),{"One Direction" : ["Story of my life"]})
 
     def test_remove_library_typical2(self):
@@ -588,6 +612,9 @@ class TestHeadset(unittest.TestCase):
         test_remove2.set_library({"NewJeans" : ["ETA","Cool with you","OMG", "HypeBoy"] , "Dua Lipa": ["Leviatating"]})
         #remove artist and song from library
         self.assertEqual(test_remove2.remove_library({"NewJeans" : ["Cool with you","HypeBoy"] , "Dua Lipa": ["Leviatating"]}), True)
+        
+        #check library (to be cont.)
+        # self.assertEqual(templete_headset.getLibrary(), {"NewJeans" : ["ETA", "OMG"]})
                 
     def test_remove_library_typical3(self):
         """
@@ -600,7 +627,9 @@ class TestHeadset(unittest.TestCase):
         templete_headset.set_library({"Travis Scott" : ["5% TINT","K-POP","SICKO MODE", "TELEKINESIS"] , "Dua Lipa": ["Leviatating"]})
         #remove artist and song from library
         self.assertEqual(templete_headset.remove_library({"Travis Scott" : ["5% TINT","K-POP","SICKO MODE", "TELEKINESIS"]}), True)
-        #check library
+        
+        
+        #check library (to be cont.)
         # self.assertEqual(templete_headset.getLibrary(),{"Dua Lipa": ["Leviatating"]})
         
 
@@ -616,6 +645,9 @@ class TestHeadset(unittest.TestCase):
         #remove artist and song from library
         self.assertEqual(templete_headset.remove_library({" ": ["I Knew You Were Trouble.", "Blank Space", "Anti-Hero", "Love Story"]}), False)
         
+        #check library (to be cont.)
+        # self.assertEqual(templete_headset.getLibrary(),{"Taylor Swift": ["I Knew You Were Trouble.", "Blank Space"]})
+        
     def test_remove_library_unusual2(self):
         """
         Input: {"Taylor Swift": []}
@@ -625,9 +657,12 @@ class TestHeadset(unittest.TestCase):
         templete_headset.remove_all_library(), True
         #import artist name and songs into library
         templete_headset.set_library({"Taylor Swift": ["I Knew You Were Trouble.", "Blank Space"]})
-        #remove artist and song from library
+        #remove artist and song from library 
         self.assertEqual(templete_headset.remove_library({"Taylor Swift": []}), False)
-
+        
+        
+        #check library (to be cont.)
+        # self.assertEqual(templete_headset.getLibrary(),{"Taylor Swift": ["I Knew You Were Trouble.", "Blank Space"]})
     
 
     def test_remove_library_error1(self):
@@ -671,6 +706,8 @@ class TestHeadset(unittest.TestCase):
         templete_headset.set_library({"Taylor Swift": ["I Knew You Were Trouble.", "Blank Space"]})
         #remove artist and song from library
         self.assertEqual(templete_headset.remove_all_library(), True)
+        #check library
+        self.assertEqual(templete_headset.getLibrary(), {})
 
 
 #Mutator methods: features test_...
@@ -682,6 +719,7 @@ class TestHeadset(unittest.TestCase):
         Expected output: True
         """
         self.assertEqual(templete_headset.power_on(), True)
+        self.assertEqual(templete_headset.getPowerStatus(), True)
         
     def test_power_off(self):
         """
@@ -689,6 +727,8 @@ class TestHeadset(unittest.TestCase):
         Expected output: True
         """
         self.assertEqual(templete_headset.power_off(), True)
+        self.assertEqual(templete_headset.getPowerStatus(), False)
+
         
     def test_play(self):
         """
@@ -697,7 +737,6 @@ class TestHeadset(unittest.TestCase):
         """
         #turn on headset
         self.assertAlmostEqual(templete_headset.power_on(), True)
-        
         #check play function
         self.assertEqual(templete_headset.play(), True)
         
@@ -716,6 +755,8 @@ class TestHeadset(unittest.TestCase):
         self.assertEqual(templete_headset.play(), True)
         #test pause function
         self.assertEqual(templete_headset.pause(), True)
+        #check play is off
+        self.assertEqual(templete_headset.getPlaying(), False)
         
     def test_skip(self):
         """
@@ -768,6 +809,8 @@ class TestHeadset(unittest.TestCase):
         """
         #test noise cancelling on function
         self.assertEqual(templete_headset.noise_cancelling_on(), True)
+        #check sound control varable 
+        self.assertEqual(templete_headset.getSoundControl(), "noise_cancelling")
 
         
 
@@ -778,6 +821,9 @@ class TestHeadset(unittest.TestCase):
         """
         #test noise cancelling off function
         self.assertEqual(templete_headset.noise_cancelling_off(), True)
+        #check sound control varable 
+        self.assertEqual(templete_headset.getSoundControl(), "off")
+
 
         
     def test_ambient_sound_on(self):
@@ -786,7 +832,10 @@ class TestHeadset(unittest.TestCase):
         Expected output: True
         """
         #test ambient sound on function
-        self.assertEqual(templete_headset.ambient_sound_on(), True)   
+        self.assertEqual(templete_headset.ambient_sound_on(), True)
+        #check sound control varable 
+        self.assertEqual(templete_headset.getSoundControl(), "ambient_sound")
+ 
         
     def test_ambient_sound_off(self):
         """
@@ -795,6 +844,9 @@ class TestHeadset(unittest.TestCase):
         """
         #test ambient sound off function
         self.assertEqual(templete_headset.ambient_sound_off(), True)
+        #check sound control varable 
+        self.assertEqual(templete_headset.getSoundControl(), "off")
+
         
     def test_sound_control_off(self):
         """
@@ -803,6 +855,9 @@ class TestHeadset(unittest.TestCase):
         """
         #test ambient sound off function
         self.assertEqual(templete_headset.sound_control_off(), True)
+        #check sound control varable 
+        self.assertEqual(templete_headset.getSoundControl(), "off")
+
         
         
 #Mutator methods: calculation

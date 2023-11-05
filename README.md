@@ -9,10 +9,11 @@ This is a starting template for MSCI 240 Assignment 1 (Python). You should repla
 Headset class representing a headset, its functions, brand name, model name, price, battery_life_hours and an optional parameter for wire or wireless headsets 
 
 import the following modulue:
-import numpy as np
-from scipy.integrate import quad
-import pandas as pd
-import sys
+- numpy
+- scipy.integrate import quad 
+- pandas 
+- sys
+- matplotlib.pyplot as plt
 
 
 # Test Instructions
@@ -27,6 +28,6 @@ In the git bash: type `python headset.py`
 or
 run the `headset.py` file in the terminal
 
-# Acknowledgements
+will print an instance of Headset and examples of the functions to demonstrate the Headset class
 
-Write any collaborative efforts, study groups, or use of generative AI or other assistive tools here
+# Acknowledgements

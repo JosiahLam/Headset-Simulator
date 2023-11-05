@@ -1,8 +1,7 @@
 # run_tests.py
 #
-# Author: Oliver Schneider
-# Email: 
-# Student ID: 1234567890
+# Author: Josiah Lam
+# Email: josiahlam65@gmail.com
 #
 # use this to conveniently run your unittests
 

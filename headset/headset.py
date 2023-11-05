@@ -655,7 +655,7 @@ class Headset:
         return true if Noise Cancelling is on, false otherwise
         '''
         #set self._current_sond_control to "ambient_sound"
-        self._current_sound_control = self._sound_control[2]
+        self._current_sound_control = self._sound_control[1]
         #update self._ambient_sond
         self._ambient_sound = True
         return True
@@ -669,7 +669,7 @@ class Headset:
         return true if Noise Cancelling is off, false otherwise
         '''
         #set self._current_sond_control to "off"
-        self._current_sound_control = self._sound_control[0]
+        self._current_sound_control = self._sound_control[2]
         #update self._ambient_sond
         self._ambient_sound = False
         return True
@@ -729,110 +729,124 @@ class Headset:
     #list
     #int
     #float
+    
+    def size_analysis(self):
+        '''
+        size_analysis()
+        
+        returns 3 graphs, analyzing how increase in size of strings, intergers or float can affect the Moemory
+        '''
+        #set default variables
+        brand_str = "Appleeeeeeeeeeeeeeeeeeeeeee" 
+        model_str = "AirPod MAX"
+        price_float = 3000.0
+        battery_life_hour_int = 3000
+        
+        #create a class instance
+        #test str
+        str_mstore = []
+        str_count = 0
+        str_store_count = []
+        for i in range(30):
+            #create a class instance
+            str_memory_headset = Headset(brand_str, model_str, price_float, battery_life_hour_int)
+            #update count str
+            str_count += len(brand_str)
+            #append str_count to a list
+            str_store_count.append(str_count)
+            #append memory to list
+            str_mstore.append((sys.getsizeof(str_memory_headset)))
+            #add strings to the orginal 
+            brand_str += brand_str
+        
+
+        #test float
+        float_mstore = []
+        float_count = 0
+        float_store_count = []
+        for i in range(30):
+            #create a class instance
+            float_memory_headset = Headset(brand_str, model_str, price_float, battery_life_hour_int)
+            #update count float
+            float_count += 10000.0
+            #append float_count to a list
+            float_store_count.append(float_count)
+            #append memory to list
+            float_mstore.append((sys.getsizeof(float_memory_headset)))
+            #add floatation values to the orginal 
+            price_float += 10000 #price_float
+
+
+        #test int
+        int_mstore = []
+        int_count = 0
+        int_store_count = []
+        for i in range(30):
+            #create a class instance
+            int_memory_headset = Headset(brand_str, model_str, price_float, battery_life_hour_int)
+            #update count int
+            int_count += 10000
+            #append int_count to a list
+            int_store_count.append(int_count)
+            #append memory to list
+            int_mstore.append((sys.getsizeof(int_memory_headset)))
+            #add interger values to the orginal 
+            battery_life_hour_int += 10000 #battery_life_hour_int 
+
+        #create a dictionary to store items
+        data = {
+        'Size of String': str_store_count,
+        'String Memory': str_mstore,
+        'Size of Float' : float_store_count,
+        'Float Memory' : float_mstore,
+        'Size of Interger': int_store_count,
+        'Int Memory': int_mstore
+        }
+
+        # Create a DataFrame from the dictionary
+        df = pd.DataFrame(data)
+        print(df)
+        
+        
+        # Create a plot for 'Size of String' vs. 'String Memory'
+        plt.figure(figsize=(10, 6))
+        plt.scatter(df['Size of String'], df['String Memory'])
+        plt.title('Size of String vs. String Memory')
+        plt.xlabel('Size of String')
+        plt.ylabel('String Memory')
+        plt.grid(True)
+        plt.show()
+
+        # # Create a plot for 'Size of Float' vs. 'Float Memory'
+        plt.figure(figsize=(10, 6))
+        plt.scatter(df['Size of Float'], df['Float Memory'])
+        plt.title('Size of Float vs. Float Memory')
+        plt.xlabel('Size of Float')
+        plt.ylabel('Float Memory')
+        plt.grid(True)
+        plt.show()
+
+        # # Create a plot for 'Size of Integer' vs. 'Int Memory'
+        plt.figure(figsize=(10, 6))
+        plt.scatter(df['Size of Interger'], df['Int Memory'])
+        plt.title('Size of Integer vs. Int Memory')
+        plt.xlabel('Size of Integer')
+        plt.ylabel('Int Memory')
+        plt.grid(True)
+        plt.show()
+
+    # graph axis
+    # y momoery
+    # x int or float or list or str or dict
+
+
         
 #==========================================================================
 
 if __name__ == "__main__":
-    #set default variables
-    brand_str = "Appleeeeeeeeeeeeeeeeeeeeeee" 
-    model_str = "AirPod MAX"
-    price_float = 3000.0
-    battery_life_hour_int = 3000
+    #create an instance
+    MyHeadset = Headset("SONY", "XM4", 300.0, 24)
+    print(MyHeadset.getName())
+    print(MyHeadset.getPrice())
+    print(MyHeadset.getBattery_life_hour())
     
-    #create a class instance
-    #test str
-    str_mstore = []
-    str_count = 0
-    str_store_count = []
-    for i in range(30):
-        #create a class instance
-        str_memory_headset = Headset(brand_str, model_str, price_float, battery_life_hour_int)
-        #update count str
-        str_count += len(brand_str)
-        #append str_count to a list
-        str_store_count.append(str_count)
-        #append memory to list
-        str_mstore.append((sys.getsizeof(str_memory_headset)))
-        #add strings to the orginal 
-        brand_str += brand_str
-    
-
-    #test float
-    float_mstore = []
-    float_count = 0
-    float_store_count = []
-    for i in range(30):
-        #create a class instance
-        float_memory_headset = Headset(brand_str, model_str, price_float, battery_life_hour_int)
-        #update count float
-        float_count += 10000.0
-        #append float_count to a list
-        float_store_count.append(float_count)
-        #append memory to list
-        float_mstore.append((sys.getsizeof(float_memory_headset)))
-        #add floatation values to the orginal 
-        price_float += 10000 #price_float
-
-
-    #test int
-    int_mstore = []
-    int_count = 0
-    int_store_count = []
-    for i in range(30):
-        #create a class instance
-        int_memory_headset = Headset(brand_str, model_str, price_float, battery_life_hour_int)
-        #update count int
-        int_count += 10000
-        #append int_count to a list
-        int_store_count.append(int_count)
-        #append memory to list
-        int_mstore.append((sys.getsizeof(int_memory_headset)))
-        #add interger values to the orginal 
-        battery_life_hour_int += 10000 #battery_life_hour_int 
-
-    #create a dictionary to store items
-    data = {
-    'Size of String': str_store_count,
-    'String Memory': str_mstore,
-    'Size of Float' : float_store_count,
-    'Float Memory' : float_mstore,
-    'Size of Interger': int_store_count,
-    'Int Memory': int_mstore
-    }
-
-    # Create a DataFrame from the dictionary
-    df = pd.DataFrame(data)
-    print(df)
-    
-    
-    # Create a plot for 'Size of String' vs. 'String Memory'
-    plt.figure(figsize=(10, 6))
-    plt.scatter(df['Size of String'], df['String Memory'])
-    plt.title('Size of String vs. String Memory')
-    plt.xlabel('Size of String')
-    plt.ylabel('String Memory')
-    plt.grid(True)
-    plt.show()
-
-    # # Create a plot for 'Size of Float' vs. 'Float Memory'
-    plt.figure(figsize=(10, 6))
-    plt.scatter(df['Size of Float'], df['Float Memory'])
-    plt.title('Size of Float vs. Float Memory')
-    plt.xlabel('Size of Float')
-    plt.ylabel('Float Memory')
-    plt.grid(True)
-    plt.show()
-
-    # # Create a plot for 'Size of Integer' vs. 'Int Memory'
-    plt.figure(figsize=(10, 6))
-    plt.scatter(df['Size of Interger'], df['Int Memory'])
-    plt.title('Size of Integer vs. Int Memory')
-    plt.xlabel('Size of Integer')
-    plt.ylabel('Int Memory')
-    plt.grid(True)
-    plt.show()
-
-# graph axis
-# y momoery
-# x int or float or list or str or dict
-
